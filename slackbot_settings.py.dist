@@ -1,0 +1,26 @@
+# Slackbot Token
+API_TOKEN = ''
+
+# Google Cloud Vision API Key
+GOOGLE_API_KEY = ''
+
+# Google Sheet ID
+SPREADSHEET_ID = ''
+SA_CREDENTIAL_PATH = ''
+
+MEMBERS = []
+ 
+DELIVERERS = []
+
+
+###################
+# DO NOT EDIT HERE
+###################
+PLUGINS = ['uketorikun.plugins']
+DEFAULT_REPLY = "Sorry but I didn't understand you"
+
+# Google Cloud Vision
+ENDPOINT_URL = 'https://vision.googleapis.com/v1/images:annotate'
+
+# Google Sheets
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
