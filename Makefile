@@ -6,3 +6,6 @@ install:
 
 run:
 	python ./run.py
+
+docker:
+	sudo docker build -t hichtakk/uketorikun .
