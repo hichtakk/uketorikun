@@ -6,10 +6,9 @@ GOOGLE_API_KEY = ''
 
 # Google Sheet ID
 SPREADSHEET_ID = ''
-SA_CREDENTIAL_PATH = ''
+SA_CREDENTIAL_PATH = '/etc/uketorikun/service_account.json'
 
 MEMBERS = []
- 
 DELIVERERS = []
 
 
