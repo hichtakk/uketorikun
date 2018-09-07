@@ -17,7 +17,7 @@ def write_package_info(reporter, addressee, deliverer, image_url):
                               discoveryServiceUrl=discoveryUrl)
     rangeName = 'A3:C3'
     body = {
-        'values': ['', [str(datetime.now()), reporter, '', addressee, '', '', deliverer, '', '', '', '', image_url]],
+        'values': ['', str(datetime.now()), reporter, '', addressee, '', '', deliverer, '', '', '', '', image_url],
     }
     result = service.spreadsheets().values().append(
         spreadsheetId=SPREADSHEET_ID, range=rangeName,
