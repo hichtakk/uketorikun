@@ -47,7 +47,7 @@ def check_image(token, file, message):
     addressee = cvision.find_addressee(result)
     print(addressee)
 
-    print('start finding addressee')
+    print('start finding deliverer')
     deliverer = cvision.find_deliverer(result)
     print(deliverer)
 

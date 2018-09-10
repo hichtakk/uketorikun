@@ -41,9 +41,13 @@ def find_addressee(label_text):
         for line in label_text.upper().split("\n"):
             if line == "":
                 continue
+            # string pattern exact match
+            if name in line:
+                return {'line': line, 'name': name, 'ratio': 1.0}
+            # fuzzy finding
             r = difflib.SequenceMatcher(None, name, line).ratio()
             if r == 1.0: # exact match
-                return [{'line': line, 'name': name, 'ratio': r}]
+                return {'line': line, 'name': name, 'ratio': r}
             elif r >= 0.5: # ignore line less than 50% match
                 probability.append({'line': line, 'name': name, 'ratio': r})
     probability.sort(key=lambda x: x['ratio'])
