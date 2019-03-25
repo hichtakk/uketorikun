@@ -36,24 +36,28 @@ def check_image(token, file, message):
     print('image file found in message')
     image = get_image(token, file)
 
-    print('start scaning image')
+    print('# Start scaning image')
     result = cvision.ocr_image(image)
-    print('scanning completed')
+    print('# Scanning completed')
     print('========')
     print(result)
     print('========')
 
-    print('start finding addressee')
+    print('# Start finding addressee')
     addressee = cvision.find_addressee(result)
     print(addressee)
 
-    print('start finding deliverer')
+    print('# Start finding deliverer')
     deliverer = cvision.find_deliverer(result)
     print(deliverer)
 
-    print('write package information to sheet')
+    print('# Write package information to sheet')
+
+    reporter_uid = message.body['user']
+    reporter = message._client.get_user(reporter_uid)
+
     try:
-        sheets.write_package_info(message.body['user_profile']['real_name'], addressee['name'], deliverer['name'], file['url_private'])
+        sheets.write_package_info(reporter['real_name'], addressee['name'], deliverer['name'], file['url_private'])
     except Exception as e:
         raise e
 
