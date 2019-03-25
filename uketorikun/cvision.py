@@ -22,9 +22,9 @@ def ocr_image(image_bin):
     })
     request_data = {'requests': req_data}
     response = requests.post(ENDPOINT_URL,
-                  data=json.dumps(request_data).encode(),
-                  params={'key': GOOGLE_API_KEY},
-                  headers={'Content-Type': 'application/json'})
+                             data=json.dumps(request_data).encode(),
+                             params={'key': GOOGLE_API_KEY},
+                             headers={'Content-Type': 'application/json'})
     if response.status_code != 200 or response.json().get('error'):
         print('scanning failed')
         return ''
@@ -46,9 +46,9 @@ def find_addressee(label_text):
                 return {'line': line, 'name': name, 'ratio': 1.0}
             # fuzzy finding
             r = difflib.SequenceMatcher(None, name, line).ratio()
-            if r == 1.0: # exact match
+            if r == 1.0:  # exact match
                 return {'line': line, 'name': name, 'ratio': r}
-            elif r >= 0.5: # ignore line less than 50% match
+            elif r >= 0.5:  # ignore line less than 50% match
                 probability.append({'line': line, 'name': name, 'ratio': r})
     probability.sort(key=lambda x: x['ratio'])
     probability.reverse()
@@ -67,8 +67,9 @@ def find_deliverer(label_text):
             if line == "":
                 continue
             r = difflib.SequenceMatcher(None, deliverer, line).ratio()
-            if r >= 0.5: # ignore line less than 50% match
-                probability.append({'line': line, 'name': deliverer, 'ratio': r})
+            if r >= 0.5:  # ignore line less than 50% match
+                probability.append(
+                    {'line': line, 'name': deliverer, 'ratio': r})
 
     probability.sort(key=lambda x: x['ratio'])
     probability.reverse()

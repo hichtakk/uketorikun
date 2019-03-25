@@ -9,7 +9,8 @@ from slackbot_settings import SCOPES, SPREADSHEET_ID, SA_CREDENTIAL_PATH
 
 def write_package_info(reporter, addressee, deliverer, image_url):
     # Service Account
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(SA_CREDENTIAL_PATH, SCOPES)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(
+        SA_CREDENTIAL_PATH, SCOPES)
     http = credentials.authorize(httplib2.Http())
     discoveryUrl = ('https://sheets.googleapis.com/$discovery/rest?'
                     'version=v4')

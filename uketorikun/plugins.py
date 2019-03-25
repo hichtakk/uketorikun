@@ -57,7 +57,8 @@ def check_image(token, file, message):
     reporter = message._client.get_user(reporter_uid)
 
     try:
-        sheets.write_package_info(reporter['real_name'], addressee['name'], deliverer['name'], file['url_private'])
+        sheets.write_package_info(
+            reporter['real_name'], addressee['name'], deliverer['name'], file['url_private'])
     except Exception as e:
         raise e
 
@@ -71,9 +72,9 @@ https://docs.google.com/spreadsheets/d/{sheet}
     """
     print('Done. Report message to slack.')
     print(msg.format(addressee=addressee['name'],
-                            ratio=addressee['ratio']*100,
-                            deliverer=deliverer['name'],
-                            sheet=SPREADSHEET_ID))
+                     ratio=addressee['ratio']*100,
+                     deliverer=deliverer['name'],
+                     sheet=SPREADSHEET_ID))
     message.send(msg.format(addressee=addressee['name'],
                             ratio=addressee['ratio']*100,
                             deliverer=deliverer['name'],
