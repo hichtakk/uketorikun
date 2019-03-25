@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 flake8 = "*"
+autopep8 = "*"
 
 [packages]
 google-api-python-client = "*"
@@ -14,3 +15,8 @@ slackbot = "*"
 
 [requires]
 python_version = "3.7"
+
+[scripts]
+start = "python run.py"
+lint = "flake8 ."
+fix = "autopep8 -ivr ."
